@@ -431,7 +431,8 @@ reduces them without incurring seq initialization"
   (-hash [coll] (hash-coll coll)))
 
 (defn prim-seq [prim i]
-  (when-not (= 0 (.-length prim))
+  (if (== 0 (.-length prim))
+    nil
     (IndexedSeq. prim i)))
 
 (defn array-seq [array i]
