@@ -503,7 +503,7 @@
                (when variadic
                  (emitln "var " (last params) " = null;")
                  (emitln "if (goog.isDef(var_args)) {")
-                 (emitln "  " (last params) " = cljs.core.array_seq(Array.prototype.slice.call(arguments, " (dec (count params)) "),0);")
+                 (emitln "  " (last params) " = cljs.core.array_seq(arguments, " (dec (count params)) ");")
                  (emitln "} "))
                (emitln "return " delegate-name ".call(" (string/join ", " (cons "this" params)) ");")
                (emitln "};")
